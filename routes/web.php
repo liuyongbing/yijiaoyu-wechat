@@ -14,3 +14,5 @@
 Route::get('/', function () {
     return view('welcome');
 });
+//Student:学员
+Route::resource('students', 'StudentsController');
