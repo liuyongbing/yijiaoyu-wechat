@@ -143,4 +143,18 @@ return $results;
         
         return redirect()->route($this->route . '.index');
     }
+    
+    /**
+     * 查看
+     *
+     * @param int $id
+     */
+    public function show($id)
+    {
+        $detail = $this->repository->detail($id);
+        
+        return view($this->route . '.detail', [
+            'item' => $detail,
+        ]);
+    }
 }

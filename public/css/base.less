@@ -1,0 +1,411 @@
+* {
+
+   -webkit-box-sizing: border-box;
+
+    box-sizing: border-box;
+
+}
+
+//禁止文本缩放 字体设置  取消touch高亮效果
+
+html {
+
+    width: 100%;
+
+    height: 100%;
+
+   margin: 0px;
+
+   padding: 0px;
+
+   -webkit-text-size-adjust: 100%;
+
+   font-family: -apple-system, "PingFang SC","Helvetica Neue", Helvetica, STHeiTi, sans-serif;
+
+   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+    background: transparent;
+
+   }
+
+body {
+
+    width: 100%;
+
+    height: 100%;
+
+   -webkit-overflow-scrolling: touch;
+
+ }
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, sumary {
+
+    margin: 0;
+
+    padding: 0;
+
+}
+
+//清除输入框内阴影
+
+input, select,textarea {
+border: 0;
+-webkit-appearance: none;
+outline:none;
+appearance:none;
+background: none;
+  &:foucs,&:hover{
+    outline:none;
+  }
+
+}
+
+ol, ul {
+
+    list-style: none;
+
+}
+
+//禁止选中文本内容
+
+*:not(input, select, textArea) {
+
+    -webkit-user-select: none;
+
+}
+
+//禁用长按页面时的弹出菜单(iOS下有效) ,img和a标签都要加
+
+img,a{
+
+-webkit-touch-callout:none;
+
+}
+
+a,a:active,a:hover {
+
+text-decoration: none;
+
+}
+
+//去掉点击链接和文本框对象时默认的灰色半透明覆盖层(iOS)或者虚框(Android)
+
+a,button,input,textarea{
+
+-webkit-tap-highlight-color:rgba(0,0,0,0);
+
+}
+.flex{
+  -webkit-display:flex;
+  display: flex;
+}
+.aligncenter{
+  align-content: center;
+  -webkit-align-content:center;
+}
+.row{
+  justify-content: space-between;
+  -webkit-justify-content:space-between;
+}
+.page{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+
+  position: relative;
+
+}
+.loading{
+  overflow: hidden;
+   z-index: 100;
+   background: url("../img/bg.jpg") no-repeat center;
+   background-size: 100%;
+   animation: loading 0.3s  forwards;
+   .icon_close{
+    width: 0.533rem;
+    height: 0.533rem;
+    background: url('../img/close.png') no-repeat center;
+    background-size: 100%;
+    position: absolute;
+    right: 1.067rem;
+    top: 0.8rem;
+   }
+   .card{
+     width: 9.08rem;
+     height: 14.1rem;
+      margin:0 auto;
+      margin-top: 1.6rem;
+      background: url("../img/cardBg.png") no-repeat center;
+      background-size: 100%;
+      position: relative;
+      opacity: 0;
+      animation:0.4s cardLoad 0.5s  forwards;
+      .logo{
+        width: 4.693rem;
+        height: 2.587rem;
+        margin:0 auto;
+        position: absolute;
+        top: 2.667rem;
+        left: 2rem;
+        background:url("../img/logo.png") no-repeat center;
+        background-size: 100%;
+      }
+      .center{
+        width: 4.2rem;
+        height: 1rem;
+        background: url("../img/getCard.png") no-repeat center;
+        background-size:100%;
+        position: absolute;
+        top: 8.667rem;
+        left: 2.4rem;
+      }
+      .left{
+        width: 1rem;
+        height: 1.2rem;
+        background: url("../img/left.png") no-repeat center;
+        background-size:100%;
+        position: absolute;
+        top: 8rem;
+        left: 1.4rem;
+        animation: bling 0.1s infinite alternate;
+      }
+      .right{
+         width: 1rem;
+        height: 1.2rem;
+        background: url("../img/right.png") no-repeat center;
+        background-size:100%;
+        position: absolute;
+        top: 9.2rem;
+        left:72%;
+        animation: bling 0.1s infinite alternate;
+      }
+   }
+}
+.setMember{
+  display: none;
+  .setSex{
+     display: none;
+     label{
+       margin-top: -0.8rem;
+     }
+    }
+  .cardbox{
+    background: #eeedf3;
+    padding: 0.2rem 0;
+    text-align: center;
+    img{
+      width: 80%
+    }
+  }
+  .btn{
+    margin-top: 0.067rem
+  }
+}
+ .titlebox{
+    background:#11224a;
+    color: #fff;
+    font-size: 0.533rem;
+    text-align: center;
+    position: relative;
+    width: 100%;
+    height: 1.2rem;
+    line-height: 1.2rem;
+    .title{
+      display: inline-block;
+      vertical-align: middle;
+         font-weight: 400;
+    }
+    a{
+       color: #fff;
+      font-size: 0.64rem;
+      display: inline-block;
+      vertical-align: middle;
+      position: absolute;
+      left: 0.533rem;
+      top:0;
+
+    }
+  }
+.addMember{
+  display: none;
+   .input_box{
+    height: 1.4rem !important;
+    line-height: 1.4rem !important;
+    .icon{
+      margin-top: 0.24rem;
+    }
+    input[type=radio]{
+      margin-top: 0.4rem !important
+    }
+   }
+  .isture{
+    font-size:0.533rem;
+    color:red;
+    padding-top: 0.133rem
+  }
+
+}
+
+// form
+.form{
+  width: 100%;
+  .errorInput{
+    border-bottom-color: red !important;
+  }
+  .input_box{
+    display: flex;
+    border-bottom: 1px solid #ddd;
+    padding: 0 0.533rem;
+    font-size: 0.373rem;
+    height:1.067rem;
+    line-height: 1.067rem;
+     align-content: center;
+   -webkit-align-content:center;
+    text-align: center;
+    position: relative;
+    .getSex{
+
+    }
+    .setSex{
+      margin-left: -0.3rem;
+    }
+    .icon-arrow{
+      position: absolute;
+      right: 1rem;
+      top: 0
+    }
+     .icon{
+      width: 0.853rem;
+      height: 0.9rem;
+      display: inline-block;
+      vertical-align: middle;
+      background:url("../img/icon.png") no-repeat center;
+     }
+     .icon1{
+      background-position: -17px -14px;
+     }
+     .icon2{
+      background-position: -64px -14px;
+     }
+     .icon2+.tip,.icon3+.tip{
+      letter-spacing: 28px;
+      margin-right: -0.8rem;
+     }
+     .icon3{
+      background-position: -113px -16px;
+     }
+     .icon4{
+      background-position: -12px -64px; 
+     }
+     .icon5{
+      background-position: -67px -64px;
+     }
+     .icon6{
+      background-position: -115px -64px;
+     }
+     .icon7{
+      background-position: -15px -112px;
+     }
+     .icon7+.tip{
+      letter-spacing: 8px;
+      margin-right: -0.3rem;
+     }
+     .icon8{
+      background-position: -68px -113px;
+     }
+     input[type="radio"]{
+      display: inline-block;
+       border: 1px solid #ddd;
+       width: 0.533rem;
+       height: 0.533rem;
+       border-radius: 50%;
+       margin:0.267rem 0.267rem;
+     }
+     label{
+      display: inline-block;
+      vertical-align: middle;
+     }
+     .tip{
+       padding-right: 0.533rem;
+       margin-left: 0.267rem;
+
+     }
+  }
+}
+
+.isActive{
+  background:orange;
+}
+.btn{
+  width: 85%;
+  border:none;
+  display: block;
+  margin:0 auto;
+  text-align: center;
+  font-size: 0.427rem;
+  height: 1.067rem;
+  line-height: 1.067rem;
+  background: #fbcc0d;
+  border-style: solid;
+  border-right-color:#333;
+  border-bottom-color:#333;
+  border-left-color:#fff;
+  border-top-color:#fff;
+  border-width:1px;
+  margin-top: 0.533rem;
+  border-radius: 5px;
+}
+
+@keyframes loading {
+    0%{
+      height: 0
+    }
+    100%{
+      height: 100%
+    }
+}
+@keyframes  cardLoad {
+  0%{
+    opacity: 0
+  }
+  100%{
+    opacity: 1
+  }
+}
+@keyframes bling {
+  0%,100%{
+    margin-left: 0
+  }
+  10%{
+    margin-left: 2px
+  }
+   20%{
+    margin-left: 3px
+  }
+   30%{
+    margin-left: 4px
+  }
+   40%{
+    margin-left: 5px
+  }
+   50%{
+    margin-left: 6px
+  }
+   60%{
+    margin-left: 5px
+  }
+   70%{
+    margin-left: 4px
+  }
+   80%{
+    margin-left: 3px
+  }
+   90%{
+    margin-left: 2px
+  }
+}
