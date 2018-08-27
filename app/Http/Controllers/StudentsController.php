@@ -22,61 +22,7 @@ class StudentsController extends Controller
      */
     public function index(Request $request)
     {
-        $brandId = $request->input('brand_id', 0);
-        $teamType = $request->input('team_type', 0);
-        $username = $request->input('username', '');
-        $status = $request->input('status', '');
-        
-        $page = $request->input('page', 1);
-        $size = Dictionary::PAGE_SIZE;
-        $offset = ($page-1) * $size;
-        
-        $gender = Dictionary::$gender;
-        
-        $filters = [
-            'brand_id' => 0,
-            'team_type' => 0,
-            'username' => '',
-            'status' => '',
-        ];
-        
-        $params = [];
-        if (!empty($brandId))
-        {
-            $params['brand_id'] = $brandId;
-        }
-        if (!empty($teamType))
-        {
-            $params['team_type'] = $teamType;
-        }
-        if (!empty($username))
-        {
-            $params['username'] = $username;
-        }
-        if (is_numeric($status))
-        {
-            $params['status'] = $status;
-        }
-        $filters = array_merge($filters, $params);
-        
-        $orderBy = [
-            'status' => 'desc',
-            'id' => 'desc',
-        ];
-        $results = $this->repository->list($params, $offset, $size, $orderBy);
-return $results;
-        return view($this->route . '.list', [
-            'filters' => $filters,
-            'gender' => $gender,
-            'items' => isset($results['list']) ? $results['list'] : [],
-            'pagination' => [
-                'route' => $this->route . '.index',
-                'page' => $page,
-                'size' => $size,
-                'total' => isset($results['total']) ? $results['total'] : 0
-            ],
-            'route' => $this->route,
-        ]);
+        return view($this->route . '.list');
     }
     
     /**
@@ -86,15 +32,7 @@ return $results;
      */
     public function create(Request $request)
     {
-        $gender = Dictionary::$gender;
-        
-        return view($this->route . '.add', [
-            'gender' => $gender,
-            'item' => [
-                'status' => 1
-            ],
-            'route' => $this->route,
-        ]);
+        return view($this->route . '.add');
     }
     
     /**
@@ -137,11 +75,21 @@ return $results;
      */
     public function store(Request $request)
     {
-        $data = $request->input('Record');
+        $inputs = $request->all();
+        
+        $data = [
+            'name'      => !empty($inputs['username']) ? $inputs['username']: '',
+            'gender'    => !empty($inputs['sexId']) ? $inputs['sexId']: '',
+            'birthday'  => !empty($inputs['birthday']) ? $inputs['birthday']: '',
+            'id_number' => !empty($inputs['cardId']) ? $inputs['cardId']: '',
+            'address'   => !empty($inputs['address']) ? $inputs['address']: '',
+            'school'    => !empty($inputs['school']) ? $inputs['school']: '',
+            'linkman'   => !empty($inputs['user']) ? $inputs['user']: '',
+            'mobile'    => !empty($inputs['phoneNum']) ? $inputs['phoneNum']: '',
+        ];
         
         $response = $this->repository->store($data);
-        
-        return redirect()->route($this->route . '.index');
+        return $response;
     }
     
     /**
