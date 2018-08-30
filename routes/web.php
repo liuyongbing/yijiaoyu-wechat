@@ -14,5 +14,7 @@
 Route::get('/', function () {
     return redirect('students');
 });
+//Wechat:与微信对接
+Route::any('/wechat', 'WeChatController@serve');
 //Student:学员
 Route::resource('students', 'StudentsController');
