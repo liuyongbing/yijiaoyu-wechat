@@ -23,4 +23,20 @@ class WeChatController extends Controller
         
         return $app->server->serve();
     }
+    
+    public function menu()
+    {
+        $buttons = [
+            [
+                "type" => "click",
+                "name" => "会员卡",
+                "url"  => "http://wechat.test.100yjy.com/students"
+            ]
+        ];
+        
+        $app = app('wechat.official_account');
+        $app->menu->create($buttons);
+        
+        return ;
+    }
 }
