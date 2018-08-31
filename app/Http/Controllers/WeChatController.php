@@ -24,19 +24,29 @@ class WeChatController extends Controller
         return $app->server->serve();
     }
     
+    public function callback()
+    {
+        $app = app('wechat.official_account');
+        $oauth = $app->oauth;
+        
+        // 获取 OAuth 授权结果用户信息
+        $user = $oauth->user();
+        
+        $userAttr = $user->toArray();
+file_put_contents('oauth.user.json', json_encode($userAttr));
+    }
+    
     public function menu()
     {
         $buttons = [
-            [
-                "type" => "click",
-                "name" => "会员卡",
-                "url"  => "http://wechat.test.100yjy.com/students"
-            ]
+                [
+                        "type" => "view",
+                        "name" => "会员卡",
+                        "url"  => "http://wechat.test.100yjy.com/students"
+                ]
         ];
         
         $app = app('wechat.official_account');
-        $app->menu->create($buttons);
-        
-        return ;
+        return $app->menu->create($buttons);
     }
 }

@@ -22,6 +22,20 @@ class StudentsController extends Controller
      */
     public function index(Request $request)
     {
+        $openid = $request->session()->get('openid');
+        if (empty($openid))
+        {
+            $app = app('wechat.official_account');
+            $oauth = $app->oauth;
+            return $oauth->redirect();
+        }
+        else
+        {
+            $user = $_SESSION['wechat_user'];
+            var_dump($user);
+        }
+        
+        
         return view($this->route . '.list');
     }
     
