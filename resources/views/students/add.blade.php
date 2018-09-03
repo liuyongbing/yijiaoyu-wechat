@@ -10,6 +10,9 @@
     </div>
     <div class="form">
         {{csrf_field()}}
+        
+        <input type="hidden" name="openid" value="{{ $openid }}" />
+        
         <div class="input_box">
             <span class="icon icon1"></span>
             <span class="isture">*</span>

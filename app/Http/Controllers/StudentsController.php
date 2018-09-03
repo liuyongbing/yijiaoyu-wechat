@@ -31,10 +31,8 @@ class StudentsController extends Controller
         }
         else
         {
-            $user = $_SESSION['wechat_user'];
-            var_dump($user);
+            //$student = $this->repository->detail($id);
         }
-        
         
         return view($this->route . '.list');
     }
@@ -46,7 +44,11 @@ class StudentsController extends Controller
      */
     public function create(Request $request)
     {
-        return view($this->route . '.add');
+        $openid = $request->session()->get('openid');
+        
+        return view($this->route . '.add', [
+            'openid' => $openid
+        ]);
     }
     
     /**
@@ -92,6 +94,7 @@ class StudentsController extends Controller
         $inputs = $request->all();
         
         $data = [
+            'openid'    => !empty($inputs['openid']) ? $inputs['openid']: '',
             'name'      => !empty($inputs['username']) ? $inputs['username']: '',
             'gender'    => !empty($inputs['sexId']) ? $inputs['sexId']: '',
             'birthday'  => !empty($inputs['birthday']) ? $inputs['birthday']: '',
