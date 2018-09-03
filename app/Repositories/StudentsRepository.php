@@ -9,4 +9,15 @@ class StudentsRepository extends Repository
     {
         $this->endPoint = new StudentsEndpoint();
     }
+    
+    /**
+     * 详情
+     *
+     * @param int $openid
+     * @return array
+     */
+    public function showByOpenid($openid)
+    {
+        return $this->endPoint->showByOpenid($openid);
+    }
 }

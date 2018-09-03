@@ -31,7 +31,10 @@ class StudentsController extends Controller
         }
         else
         {
-            //$student = $this->repository->detail($id);
+            $detail = $this->repository->showByOpenid($openid);
+            return view($this->route . '.detail', [
+                'item' => $detail,
+            ]);
         }
         
         return view($this->route . '.list');
