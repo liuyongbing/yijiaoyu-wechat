@@ -53,17 +53,17 @@ class WeChatController extends Controller
         
         if (!empty($user))
         {
-            $openId = $user->getId();
+            $openid = $user->getId();
             
             //1. 将用户openid保存至数据库
             $data = [
-                'openid' => $openId,
+                'openid' => $openid,
                 'original' => $user->getOriginal(),
             ];
             $this->repository->store($data);
             
             //2. 设置session:openid
-            $request->session()->set('openid', $openId);
+            $request->session()->put('openid', $openid);
             
             return redirect()->route('students');
         }
