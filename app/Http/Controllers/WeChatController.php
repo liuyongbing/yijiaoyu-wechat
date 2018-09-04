@@ -87,6 +87,11 @@ class WeChatController extends Controller
                 "type" => "view",
                 "name" => "会员卡",
                 "url"  => "http://wechat.test.100yjy.com/students"
+            ],
+            [
+                    "type" => "view",
+                    "name" => "注销",
+                    "url"  => "http://wechat.test.100yjy.com/logout"
             ]
         ];
         
