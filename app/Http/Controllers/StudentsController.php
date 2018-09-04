@@ -89,8 +89,10 @@ class StudentsController extends Controller
     {
         $inputs = $request->all();
         
+        $openid = $request->session()->get('openid');
+        
         $data = [
-            'openid'    => !empty($inputs['openid']) ? $inputs['openid']: '',
+            'openid'    => $openid,
             'name'      => !empty($inputs['username']) ? $inputs['username']: '',
             'gender'    => !empty($inputs['sexId']) ? $inputs['sexId']: '',
             'birthday'  => !empty($inputs['birthday']) ? $inputs['birthday']: '',
