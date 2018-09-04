@@ -14,6 +14,9 @@
 Route::get('/', function () {
     return redirect('students');
 });
+Route::group(['namespace' => 'Auth'], function () {
+    Route::get('logout', 'LoginController@logout')->name('logout');
+});
 //Student:学员
 Route::resource('students', 'StudentsController');
 //Wechat:与微信对接
