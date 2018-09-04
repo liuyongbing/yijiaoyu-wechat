@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Repositories\WechatOauthRepository;
 use Log;
+use Illuminate\Http\Request;
 
 class WeChatController extends Controller
 {
@@ -34,7 +35,7 @@ class WeChatController extends Controller
     /**
      * 微信用户授权后的回调
      */
-    public function callback()
+    public function callback(Request $request)
     {
         $app = app('wechat.official_account');
         $oauth = $app->oauth;
