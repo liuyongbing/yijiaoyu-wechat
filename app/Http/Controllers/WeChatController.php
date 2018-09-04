@@ -66,17 +66,13 @@ class WeChatController extends Controller
             {
                 //2. 设置session:openid
                 $request->session()->put('openid', $openid);
-            }
-            
-            if (!empty($result['student_id']))
-            {
-                //3. 设置session:openid
-                $request->session()->put('student_id', $result['student_id']);
                 
-                return redirect()->route('students.show', ['id' => $result['student_id']]);
+                return redirect()->route('students.show', ['id' => $openid]);
             }
-            
-            return redirect()->route('students.index');
+            else
+            {
+                abort(500);
+            }
         }
     }
     
