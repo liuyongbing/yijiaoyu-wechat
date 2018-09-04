@@ -31,10 +31,7 @@ class StudentsController extends Controller
         }
         else
         {
-            $detail = $this->repository->showByOpenid($openid);
-            return view($this->route . '.detail', [
-                'item' => $detail,
-            ]);
+            return redirect()->route('students.show', ['id' => 88]);
         }
         
         return view($this->route . '.list');
@@ -114,12 +111,21 @@ class StudentsController extends Controller
     
     /**
      * 查看
+     * 前台不能随意查看详情, 故重写
      *
      * @param int $id
      */
     public function show($id)
     {
-        $detail = $this->repository->detail($id);
+        $request = new Request();
+        $openid = $request->session()->get('openid');
+        
+        $detail = $this->repository->showByOpenid($openid);
+        
+        if (empty($detail))
+        {
+            return redirect()->route('students');
+        }
         
         return view($this->route . '.detail', [
             'item' => $detail,
