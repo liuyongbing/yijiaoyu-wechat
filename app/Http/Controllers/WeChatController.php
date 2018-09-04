@@ -49,6 +49,7 @@ class WeChatController extends Controller
         // $user->getAvatar(); // 头像网址
         // $user->getOriginal(); // 原始API返回的结果
         // $user->getToken(); // access_token， 比如用于地址共享时使用
+        
         if (!empty($user))
         {
             $openId = $user->getId();
@@ -70,11 +71,11 @@ class WeChatController extends Controller
     public function menu()
     {
         $buttons = [
-                [
-                        "type" => "view",
-                        "name" => "会员卡",
-                        "url"  => "http://wechat.test.100yjy.com/students"
-                ]
+            [
+                "type" => "view",
+                "name" => "会员卡",
+                "url"  => "http://wechat.test.100yjy.com/students"
+            ]
         ];
         
         $app = app('wechat.official_account');
