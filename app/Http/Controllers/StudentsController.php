@@ -29,10 +29,6 @@ class StudentsController extends Controller
             $oauth = $app->oauth;
             return $oauth->redirect();
         }
-        else
-        {
-            return redirect()->route('students.show', ['id' => 88]);
-        }
         
         return view($this->route . '.list');
     }
@@ -111,20 +107,18 @@ class StudentsController extends Controller
     
     /**
      * 查看
-     * 前台不能随意查看详情, 故重写
-     *
+     * 
      * @param int $id
      */
     public function show($id)
     {
-        $request = new Request();
-        $openid = $request->session()->get('openid');
+        $id = session()->get('student_id');
         
-        $detail = $this->repository->showByOpenid($openid);
+        $detail = $this->repository->detail($id);
         
         if (empty($detail))
         {
-            return redirect()->route('students');
+            return redirect()->route('students.index');
         }
         
         return view($this->route . '.detail', [
