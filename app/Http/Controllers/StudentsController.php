@@ -117,7 +117,7 @@ class StudentsController extends Controller
         $openid = session()->get('openid');
         
         $detail = $this->repository->showByOpenid($openid);
-$detail = $this->repository->detail($id);
+//$detail = $this->repository->detail($id);
         
         if (empty($detail))
         {

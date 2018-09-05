@@ -26,7 +26,7 @@
             <div class="sexbox setSex flex">
                 <input type="radio" name='sex1' class="checked" dataval="男" />
                 <label for='sex1'>男</label>
-                <input type="radio" name="sex2" class="checked" dataval="女" checked="true" />
+                <input type="radio" name="sex2" class="checked" dataval="女" />
                 <label for="sex2">女</label>
             </div>
         </div>
