@@ -134,9 +134,10 @@ class StudentsController extends Controller
      * 
      * @param Request $request
      */
-    public function bind(Request $request)
+    public function bindWechat(Request $request)
     {
         $openid = $request->session()->get('openid');
+//$openid = 'okDww1X0P6Kb9qTtnX_ArAeoBtrI';
         if (empty($openid))
         {
             $app = app('wechat.official_account');
@@ -145,6 +146,12 @@ class StudentsController extends Controller
         }
         
         $inputs = $request->all();
+/* $inputs = [
+    'openid'        => 'okDww1X0P6Kb9qTtnX_ArAeoBtrI',
+    'mobile'        => '18516553344',
+    'card_number'    => 2,
+]; */
+        $result = [];
         if (!empty($inputs))
         {
             $data = [
@@ -152,9 +159,15 @@ class StudentsController extends Controller
                 'mobile'        => !empty($inputs['mobile']) ? $inputs['mobile']: '',
                 'student_id'    => !empty($inputs['card_number']) ? $inputs['card_number']: '',
             ];
-            return $this->repository->bindWechat($data);
+            $result = $this->repository->bindWechat($data);
+            if (isset($result['openid']) && isset($result['student_id']))
+            {
+                unset($result['openid'], $result['student_id']);
+            }
         }
         
-        return view($this->route . '.bind');
+        return view($this->route . '.bind', [
+            'result' => $result
+        ]);
     }
 }
