@@ -20,4 +20,9 @@ class StudentsRepository extends Repository
     {
         return $this->endPoint->showByOpenid($openid);
     }
+    
+    public function bindWechat($data)
+    {
+        return $this->endPoint->bindWechat($data);
+    }
 }

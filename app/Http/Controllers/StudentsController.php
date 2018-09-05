@@ -136,6 +136,25 @@ class StudentsController extends Controller
      */
     public function bind(Request $request)
     {
-        return __METHOD__;
+        $openid = $request->session()->get('openid');
+        /* if (empty($openid))
+        {
+            $app = app('wechat.official_account');
+            $oauth = $app->oauth;
+            return $oauth->redirect();
+        } */
+        
+        $inputs = $request->all();
+        if (!empty($inputs))
+        {
+            $data = [
+                'openid'        => $openid,
+                'mobile'        => !empty($inputs['mobile']) ? $inputs['mobile']: '',
+                'card_number'   => !empty($inputs['card_number']) ? $inputs['card_number']: '',
+            ];
+            $this->repository->
+        }
+        
+        return view($this->route . '.bind');
     }
 }

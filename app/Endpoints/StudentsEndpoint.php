@@ -24,4 +24,11 @@ class StudentsEndpoint extends Endpoints
         
         return $this->response($response);
     }
+    
+    public function bindWechat($data)
+    {
+        $response = ApiClient::post($this->api . '/bind);
+        
+        return $this->response($response);
+    }
 }
