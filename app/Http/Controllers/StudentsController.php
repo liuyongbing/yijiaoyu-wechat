@@ -128,4 +128,14 @@ class StudentsController extends Controller
             'item' => $detail,
         ]);
     }
+    
+    /**
+     * 微信用户绑定学员信息
+     * 
+     * @param Request $request
+     */
+    public function bind(Request $request)
+    {
+        return __METHOD__;
+    }
 }

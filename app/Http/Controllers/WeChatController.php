@@ -80,9 +80,24 @@ class WeChatController extends Controller
     {
         $buttons = [
             [
-                "type" => "view",
                 "name" => "会员卡",
-                "url"  => "http://wechat.test.100yjy.com/students/88"
+                "sub_button" => [
+                    [
+                        "type" => "view",
+                        "name" => "新手领取",
+                        "url"  => route('students.index')
+                    ],
+                    [
+                        "type" => "view",
+                        "name" => "老生领取",
+                        "url"  => route('students.bind')
+                    ],
+                    [
+                        "type" => "view",
+                        "name" => "会员详情",
+                        "url"  => route('students.show', ['id' => 88])
+                    ],
+                ]
             ],
             [
                 "type" => "view",

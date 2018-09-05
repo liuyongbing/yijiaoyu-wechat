@@ -18,6 +18,7 @@ Route::group(['namespace' => 'Auth'], function () {
     Route::get('logout', 'LoginController@logout')->name('logout');
 });
 //Student:学员
+Route::any('students/bind', 'StudentsController@bind')->name('students.bind');
 Route::resource('students', 'StudentsController');
 //Wechat:与微信对接
 Route::any('wechat', 'WeChatController@serve');
