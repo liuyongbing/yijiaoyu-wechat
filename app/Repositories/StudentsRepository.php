@@ -21,6 +21,12 @@ class StudentsRepository extends Repository
         return $this->endPoint->showByOpenid($openid);
     }
     
+    /**
+     * 绑定微信
+     * 
+     * @param array $data
+     * @return array
+     */
     public function bindWechat($data)
     {
         return $this->endPoint->bindWechat($data);

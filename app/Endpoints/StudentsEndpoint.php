@@ -25,9 +25,15 @@ class StudentsEndpoint extends Endpoints
         return $this->response($response);
     }
     
+    /**
+     * 绑定微信
+     * 
+     * @param array $data
+     * @return array
+     */
     public function bindWechat($data)
     {
-        $response = ApiClient::post($this->api . '/bind);
+        $response = ApiClient::post($this->api . '/wechat/bind');
         
         return $this->response($response);
     }

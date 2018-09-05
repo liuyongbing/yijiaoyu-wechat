@@ -137,12 +137,12 @@ class StudentsController extends Controller
     public function bind(Request $request)
     {
         $openid = $request->session()->get('openid');
-        /* if (empty($openid))
+        if (empty($openid))
         {
             $app = app('wechat.official_account');
             $oauth = $app->oauth;
             return $oauth->redirect();
-        } */
+        }
         
         $inputs = $request->all();
         if (!empty($inputs))
@@ -150,9 +150,9 @@ class StudentsController extends Controller
             $data = [
                 'openid'        => $openid,
                 'mobile'        => !empty($inputs['mobile']) ? $inputs['mobile']: '',
-                'card_number'   => !empty($inputs['card_number']) ? $inputs['card_number']: '',
+                'student_id'    => !empty($inputs['card_number']) ? $inputs['card_number']: '',
             ];
-            $this->repository->
+            return $this->repository->bindWechat($data);
         }
         
         return view($this->route . '.bind');
