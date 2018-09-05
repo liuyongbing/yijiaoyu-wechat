@@ -23,12 +23,12 @@
             <span class="icon icon2"></span>
             <span class="tip">性别</span>
             <div class="sexbox getSex">
-                <span dataval="男">男</span>
+                <span dataval="男">{{ $item['gender'] }}</span>
             </div>
             <div class="sexbox setSex flex">
-                <input type="radio" name='sex1' class="checked" checked="true" dataval="男" />
+                <input type="radio" name='sex1' class="checked" dataval="男" @if($item['gender'] == '男') checked="true" @endif />
                 <label for='sex1'>男</label>
-                <input type="radio" name="sex2" class="checked" dataval="女"/>
+                <input type="radio" name="sex2" class="checked" dataval="女" @if($item['gender'] == '女') checked="true" @endif />
                 <label for="sex2">女</label>
             </div>
         </div>
