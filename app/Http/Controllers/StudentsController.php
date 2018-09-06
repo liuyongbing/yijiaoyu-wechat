@@ -137,7 +137,7 @@ class StudentsController extends Controller
     public function bindWechat(Request $request)
     {
         $openid = $request->session()->get('openid');
-$openid = 'okDww1X0P6Kb9qTtnX_ArAeoBtrI';
+//$openid = 'okDww1X0P6Kb9qTtnX_ArAeoBtrI';
         if (empty($openid))
         {
             $app = app('wechat.official_account');
