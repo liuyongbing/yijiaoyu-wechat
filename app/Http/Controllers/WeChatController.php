@@ -84,7 +84,7 @@ class WeChatController extends Controller
                 "sub_button" => [
                     [
                         "type" => "view",
-                        "name" => "新手领取",
+                        "name" => "新生领取",
                         "url"  => route('students.index')
                     ],
                     [
