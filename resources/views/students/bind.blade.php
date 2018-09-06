@@ -23,7 +23,7 @@ else if (typeof(item.message) != 'undefined')
 <body>
 <div class="wrap">
     <div class="header_logo">
-        <img src="/img/logo-bind.jpg?{{ $STATIC_VERSION }}" alt="logo"/>
+        <img src="/img/logo-bind.jpg?{{ $STATIC_VERSION }}" width="120" height="120" alt="logo"/>
     </div>
     <div class="formBox">
         <form action="" method="post">
