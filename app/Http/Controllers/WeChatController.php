@@ -90,7 +90,7 @@ class WeChatController extends Controller
                     [
                         "type" => "view",
                         "name" => "老生领取",
-                        "url"  => route('students.bind')
+                        "url"  => route('students.bindWechat')
                     ],
                     [
                         "type" => "view",
